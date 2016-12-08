@@ -1,4 +1,4 @@
-package com.a5corp.myapplication;
+package com.a5corp.weather;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
