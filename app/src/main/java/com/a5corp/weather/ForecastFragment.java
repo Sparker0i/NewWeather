@@ -1,9 +1,11 @@
 package com.a5corp.weather;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +41,12 @@ public class ForecastFragment extends Fragment {
 
     ArrayAdapter<String> mForecastAdapter;
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
+    }
+
     public ForecastFragment() {
     }
 
@@ -56,11 +64,17 @@ public class ForecastFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
         if (item.getItemId() == R.id.action_refresh) {
-            FetchWeatherTask task = new FetchWeatherTask();
-            task.execute("94043");
+            updateWeather();
             return true;
         }
         return true;
+    }
+
+    public void updateWeather() {
+        FetchWeatherTask task = new FetchWeatherTask();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = prefs.getString(getString(R.string.pref_location_key) , getString(R.string.pref_location_default));
+        task.execute(location);
     }
 
     @Override
