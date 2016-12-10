@@ -5,4 +5,5 @@
     <string name="action_refresh">Refresh</string>
 
     <string name="owm_id">4c08a22b02c58467e6241629c1d08717</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>
