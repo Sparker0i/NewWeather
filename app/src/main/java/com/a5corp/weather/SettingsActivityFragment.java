@@ -23,7 +23,7 @@ public class SettingsActivityFragment extends PreferenceFragment implements Pref
 
         addPreferencesFromResource(R.xml.pref_general);
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_units_default)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_units_key)));
         return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
