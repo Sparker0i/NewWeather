@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.a5corp.weather.data.WeatherContract.WeatherEntry;
 import com.a5corp.weather.data.WeatherContract.LocationEntry;
 
-/**
- * Created by Sparker0i on 12-12-2016.
- */
-
 public class WeatherDbHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "weather.db";
     private static final int DATABASE_VERSION = 1;
