@@ -4,6 +4,10 @@ import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class WeatherContract {
     public static final String CONTENT_AUTHORITY = "com.a5corp.weather";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
@@ -61,6 +65,13 @@ public class WeatherContract {
         public static String getStartDateFromUri (Uri uri) {
             return uri.getQueryParameter(COLUMN_DATETEXT);
         }
+    }
+
+    public static final String DATE_FORMAT = "yyyyMMdd";
+
+    public static String getDbDateString(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT, Locale.US);
+        return sdf.format(date);
     }
 
     public static final class LocationEntry implements BaseColumns {

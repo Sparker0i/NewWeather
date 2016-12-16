@@ -168,4 +168,40 @@ public class TestProvider extends AndroidTestCase {
         type = mContext.getContentResolver().getType(LocationEntry.buildLocationUri(1L));
         assertEquals(LocationEntry.CONTENT_ITEM_TYPE, type);
     }
+
+    public void testDeleteAllRecords() {
+        mContext.getContentResolver().delete(
+                WeatherEntry.CONTENT_URI,
+                null,
+                null
+        );
+
+        mContext.getContentResolver().delete(
+                LocationEntry.CONTENT_URI,
+                null,
+                null
+        );
+
+        Cursor cursor = mContext.getContentResolver().query(
+                WeatherEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null
+        );
+
+        assertEquals(cursor.getCount(), 0);
+        cursor.close();
+
+        cursor = mContext.getContentResolver().query(
+                LocationEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null
+        );
+
+        assertEquals(cursor.getCount(), 0);
+        cursor.close();
+    }
 }
